@@ -81,7 +81,7 @@ namespace RestauranteHotel.Domain
             throw new NotImplementedException();
         }
 
-        public string SalidaProducto(Producto producto)
+        public string SalidaProducto(ProductoSimple producto)
         {
             //AGRAGAR PRODUCTO
             if (producto.Existencia <= 0)
@@ -99,19 +99,34 @@ namespace RestauranteHotel.Domain
                     }
                 }
             }
-            /*
-            if (precio <= 0)
+            throw new NotImplementedException();
+        }
+
+        public string SalidaProducto(ProductoCompuesto producto)
+        {
+            decimal Costo = 0;
+            decimal Precio = 0;
+            //AGRAGAR PRODUCTO
+            if (producto.Existencia <= 0)
             {
-                return $"Registro Fallido, Precio Ingresado ${precio:n2}";
+                return $"Registro Fallido, Existencia Solicitada: {producto.Existencia}";
             }
-            if (Existencia == 0 && existencia <= 0)
+            if (producto.Existencia > 0)
             {
-                return $"Registro Fallido, Existencia a Extraer: {existencia}";
+                foreach (var pro in Productos)
+                {
+                    foreach (var com in producto.Productos)
+                    {
+                        if (pro.Id.Equals(com.Id))
+                        {
+                            pro.Existencia -= producto.Existencia;
+                            Costo += producto.Existencia * pro.Costo;
+                            Precio += producto.Existencia * pro.Precio;
+                        }
+                    }
+                }
+                return $"Registro Exitoso, Producto : {producto.Nombre}; Existencia Solicitada: {producto.Existencia}; Precio: {Precio:n2}; Costo: {Costo:n2}; Utilidad: {(Precio - Costo):n2}";
             }
-            if (Existencia > 0 && existencia <= 0)
-            {
-                return $"Registro Fallido, Existencia a Extraer: {existencia}";
-            }*/
             throw new NotImplementedException();
         }
 
