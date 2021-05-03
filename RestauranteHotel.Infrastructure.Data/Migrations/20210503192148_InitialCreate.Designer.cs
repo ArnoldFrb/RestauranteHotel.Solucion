@@ -9,7 +9,7 @@ using RestauranteHotel.Infrastructure.Data;
 namespace RestauranteHotel.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(RestauranteHotelContext))]
-    [Migration("20210503182927_InitialCreate")]
+    [Migration("20210503192148_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,10 +27,6 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<decimal>("Existencia")
                         .HasColumnType("TEXT");
 
@@ -43,15 +39,13 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Productos");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Producto");
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>
                 {
                     b.HasBaseType("RestauranteHotel.Domain.Entity.Producto");
 
-                    b.HasDiscriminator().HasValue("ProductoCompuesto");
+                    b.ToTable("ProductoCompuesto");
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoSimple", b =>
@@ -63,11 +57,26 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
 
                     b.HasIndex("ProductoCompuestoId");
 
-                    b.HasDiscriminator().HasValue("ProductoSimple");
+                    b.ToTable("ProductoSimple");
+                });
+
+            modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>
+                {
+                    b.HasOne("RestauranteHotel.Domain.Entity.Producto", null)
+                        .WithOne()
+                        .HasForeignKey("RestauranteHotel.Domain.Entity.ProductoCompuesto", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoSimple", b =>
                 {
+                    b.HasOne("RestauranteHotel.Domain.Entity.Producto", null)
+                        .WithOne()
+                        .HasForeignKey("RestauranteHotel.Domain.Entity.ProductoSimple", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RestauranteHotel.Domain.Entity.ProductoCompuesto", null)
                         .WithMany("Productos")
                         .HasForeignKey("ProductoCompuestoId");

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RestauranteHotel.Infrastructure.Data.Base;
 using RestauranteHotel.Domain.Entity;
 using System;
@@ -19,17 +19,10 @@ namespace RestauranteHotel.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Producto>().HasKey(c => c.Id);
-<<<<<<< Updated upstream
-           
-
-            modelBuilder.Entity<Producto>().ToTable("Producto");
+ 
             modelBuilder.Entity<ProductoSimple>().ToTable("ProductoSimple");
             modelBuilder.Entity<ProductoCompuesto>().ToTable("ProductoCompuesto");
-=======
->>>>>>> Stashed changes
 
-            modelBuilder.Entity<ProductoSimple>().ToTable("ProductoSimple");
-            modelBuilder.Entity<ProductoCompuesto>().ToTable("ProductoCompuesto");
             //modelBuilder.Entity<CuentaBancaria>().HasData(new  { Id=1, Numero="1010", Ciudad="Valleduar", Email="Email"} );
             //modelBuilder.Entity<CuentaBancaria>().HasData(new { Id = 1, Numero = "1010", Ciudad = "Valleduar", Email = "Email" });
         }
