@@ -29,7 +29,7 @@ namespace RestauranteHotel.Domain.Test
         public void NoPuedeIngresarExistenciaMenorOIgualACero()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var list = new List<Producto>();
+            var list = new List<ProductoSimple>();
 
             list.Add(new ProductoSimple("Queso", 50, 700, 500));
             list.Add(new ProductoSimple("Pan", 30, 1000, 600));
@@ -58,7 +58,7 @@ namespace RestauranteHotel.Domain.Test
         public void NoPuedeSoloicitarExistenciaMayorALaExistenciaDelProducto()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var list = new List<Producto>();
+            var list = new List<ProductoSimple>();
 
             list.Add(new ProductoSimple("Queso", 50, 700, 500));
             list.Add(new ProductoSimple("Pan", 30, 1000, 600));
@@ -87,7 +87,7 @@ namespace RestauranteHotel.Domain.Test
         public void PuedeSoloicitarExistenciaMayorALaExistenciaDelProductoYMayorACero()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var list = new List<Producto>();
+            var list = new List<ProductoSimple>();
 
             list.Add(new ProductoSimple("Queso", 50, 700, 500));
             list.Add(new ProductoSimple("Pan", 30, 1000, 600));

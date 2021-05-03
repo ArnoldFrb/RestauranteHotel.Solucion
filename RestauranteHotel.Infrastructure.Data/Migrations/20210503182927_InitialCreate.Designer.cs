@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestauranteHotel.Infrastructure.Data;
 
 namespace RestauranteHotel.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(RestauranteHotelContext))]
-    partial class RestauranteHotelContextModelSnapshot : ModelSnapshot
+    [Migration("20210503182927_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,13 +27,10 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
 
-<<<<<<< Updated upstream
-=======
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
->>>>>>> Stashed changes
                     b.Property<decimal>("Existencia")
                         .HasColumnType("TEXT");
 
@@ -41,28 +40,11 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.Property<decimal>("Precio")
                         .HasColumnType("TEXT");
 
-<<<<<<< Updated upstream
-                    b.Property<int?>("ProductoCompuestoId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("producto_type")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductoCompuestoId");
-
-                    b.ToTable("Productos");
-
-                    b.HasDiscriminator<string>("producto_type").HasValue("Producto");
-=======
                     b.HasKey("Id");
 
                     b.ToTable("Productos");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Producto");
->>>>>>> Stashed changes
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>
@@ -76,12 +58,6 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                 {
                     b.HasBaseType("RestauranteHotel.Domain.Entity.Producto");
 
-<<<<<<< Updated upstream
-                    b.HasDiscriminator().HasValue("ProductoSimple");
-                });
-
-            modelBuilder.Entity("RestauranteHotel.Domain.Entity.Producto", b =>
-=======
                     b.Property<int?>("ProductoCompuestoId")
                         .HasColumnType("INTEGER");
 
@@ -91,7 +67,6 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoSimple", b =>
->>>>>>> Stashed changes
                 {
                     b.HasOne("RestauranteHotel.Domain.Entity.ProductoCompuesto", null)
                         .WithMany("Productos")
