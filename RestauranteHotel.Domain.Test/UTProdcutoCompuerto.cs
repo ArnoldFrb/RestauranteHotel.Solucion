@@ -96,7 +96,7 @@ namespace RestauranteHotel.Domain.Test
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(2);
             //ASSERT //AFIRMACION //ENTONCES //THEN
-            Assert.AreEqual("Venta Exitosa, Cantidad: 2; Costo: 1.600,00; Precio: 2.500,00; Utilidad: 1.800,00", resultado);
+            Assert.AreEqual("Venta Exitosa, Cantidad: 2; Costo: 1600; Precio: 2500; Utilidad: 1800", resultado);
         }
     }
 }

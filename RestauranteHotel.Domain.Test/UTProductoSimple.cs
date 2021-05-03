@@ -157,7 +157,7 @@ namespace RestauranteHotel.Domain.Test
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(40);
             //ASSERT //AFIRMACION //ENTONCES //THEN
-            Assert.AreEqual("Venta Exitosa, Cantidad: 40; Costo: 3.500,00; Precio: 5.000,00; Utilidad: 60.000,00", resultado);
+            Assert.AreEqual("Venta Exitosa, Cantidad: 40; Costo: 3500; Precio: 5000; Utilidad: 60000", resultado);
         }
 
         /*
@@ -178,7 +178,7 @@ namespace RestauranteHotel.Domain.Test
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(40);
             //ASSERT //AFIRMACION //ENTONCES //THEN
-            Assert.AreEqual("Venta Exitosa, Cantidad: 40; Costo: 3.500,00; Precio: 5.000,00; Utilidad: 60.000,00", resultado);
+            Assert.AreEqual("Venta Exitosa, Cantidad: 40; Costo: 3500; Precio: 5000; Utilidad: 60000", resultado);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace RestauranteHotel.Domain
                         Costo += pro.Costo;
                     }
                 }
-                return $"Venta Exitosa, Cantidad: {existencia}; Costo: {Costo:n2}; Precio: {Precio:n2}; Utilidad: {((Precio * existencia) - (Costo * existencia)):n2}";
+                return $"Venta Exitosa, Cantidad: {existencia}; Costo: {Costo}; Precio: {Precio}; Utilidad: {((Precio * existencia) - (Costo * existencia))}";
             }
             throw new NotImplementedException();
         }
