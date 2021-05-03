@@ -22,9 +22,14 @@ namespace RestauranteHotel.Aplication
 
             if (producto != null)
             {
-                producto.Salida(request.existencia);
-                _unitOfWork.Commit();
-                return new SalidaProductoSimpleResponse("Producto simple actualizado");
+                var res = producto.Salida(request.existencia);
+                if (res == $"Registro Exitoso, Nueva Existencia: {request.existencia} del Prodcuto {request.nombre}")
+                {
+                    _unitOfWork.Commit();
+                    return new SalidaProductoSimpleResponse("Producto simple actualizado");
+                }
+
+                return new SalidaProductoSimpleResponse("Producto simple no fue actualizado");
             }
             else
             {
