@@ -46,7 +46,7 @@ namespace RestauranteHotel.Domain.Entity
                         Costo += pro.Costo;
                     }
                 }
-                return $"Venta Exitosa, Cantidad: {existencia}; Costo: {Costo}; Precio: {Precio}; Utilidad: {((Precio * existencia) - (Costo * existencia))}";
+                return "Venta Exitosa";
             }
             throw new NotImplementedException();
         }

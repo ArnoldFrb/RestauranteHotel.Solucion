@@ -26,9 +26,13 @@ namespace RestauranteHotel.Aplication
 
             if (producto != null)
             {
-                producto.Entrada(request.existencia);
-                _unitOfWork.Commit();
-                return new EntradaProductoSimpleResponse("Producto siemple actualizado");
+                var res = producto.Entrada(request.existencia);
+                if (res == $"Registro Exitoso, Nueva Existencia: {producto.Existencia} del Prodcuto {producto.Nombre}")
+                {
+                    _unitOfWork.Commit();
+                    return new EntradaProductoSimpleResponse("Producto simple actualizado");
+                }
+                return new EntradaProductoSimpleResponse("Producto simple no fue actualizado");
             }
             else
             {
