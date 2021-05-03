@@ -36,6 +36,7 @@ namespace RestauranteHotel.Domain.Test
             list.Add(new ProductoSimple("Salchicha", 40, 800, 500));
 
             var producto = new ProductoCompuesto("PERRO CALIENTE", 0, 0, 0);
+            producto.ListaProductos(list);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(0);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -65,6 +66,7 @@ namespace RestauranteHotel.Domain.Test
             list.Add(new ProductoSimple("Salchicha", 40, 800, 500));
 
             var producto = new ProductoCompuesto("PERRO CALIENTE", 0, 0, 0);
+            producto.ListaProductos(list);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(35);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -94,6 +96,7 @@ namespace RestauranteHotel.Domain.Test
             list.Add(new ProductoSimple("Salchicha", 40, 800, 500));
 
             var producto = new ProductoCompuesto("PERRO CALIENTE", 0, 0, 0);
+            producto.ListaProductos(list);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(2);
             //ASSERT //AFIRMACION //ENTONCES //THEN

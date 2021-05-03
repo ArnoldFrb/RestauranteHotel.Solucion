@@ -50,5 +50,10 @@ namespace RestauranteHotel.Domain.Entity
             }
             throw new NotImplementedException();
         }
+
+        public void ListaProductos(List<ProductoSimple> productos)
+        {
+            Productos = productos;
+        }
     }
 }
