@@ -1,3 +1,4 @@
+
 using Microsoft.EntityFrameworkCore;
 using RestauranteHotel.Infrastructure.Data.Base;
 using RestauranteHotel.Domain.Entity;

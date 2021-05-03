@@ -10,7 +10,14 @@ namespace RestauranteHotel.Aplication
         private readonly IUnitOfWork _unitOfWork;
         private readonly IProductoSimpleRepository _productoSimpleRepository;
 
-        public SalidaProductoSimpleService(IUnitOfWork unitOfWork, IProductoSimpleRepository productoSimpleRepository)
+        public SalidaProductoSimpleService(IUnitOfWork unitOfWork, IProductoRepository productoRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _productoRepository = productoRepository;
+        }
+
+        public SalidaProductoSimpleResponse salidaProductoSimple(SalidaProductoSimpleRequest request)
+
         {
             _unitOfWork = unitOfWork;
             _productoSimpleRepository = productoSimpleRepository;
