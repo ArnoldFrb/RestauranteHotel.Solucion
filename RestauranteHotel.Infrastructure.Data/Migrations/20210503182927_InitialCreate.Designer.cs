@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestauranteHotel.Infrastructure.Data;
 
 namespace RestauranteHotel.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(RestauranteHotelContext))]
-    partial class RestauranteHotelContextModelSnapshot : ModelSnapshot
+    [Migration("20210503182927_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,13 +27,10 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
 
-<<<<<<< Updated upstream
-=======
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
->>>>>>> Stashed changes
                     b.Property<decimal>("Existencia")
                         .HasColumnType("TEXT");
 
@@ -41,33 +40,24 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.Property<decimal>("Precio")
                         .HasColumnType("TEXT");
 
-<<<<<<< Updated upstream
-                    b.Property<int?>("ProductoCompuestoId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductoCompuestoId");
+                    b.ToTable("Productos");
 
-                    b.ToTable("Producto");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Producto");
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>
                 {
                     b.HasBaseType("RestauranteHotel.Domain.Entity.Producto");
 
-                    b.ToTable("ProductoCompuesto");
+                    b.HasDiscriminator().HasValue("ProductoCompuesto");
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoSimple", b =>
                 {
                     b.HasBaseType("RestauranteHotel.Domain.Entity.Producto");
 
-                    b.HasDiscriminator().HasValue("ProductoSimple");
-                });
-
-            modelBuilder.Entity("RestauranteHotel.Domain.Entity.Producto", b =>
-=======
                     b.Property<int?>("ProductoCompuestoId")
                         .HasColumnType("INTEGER");
 
@@ -77,29 +67,10 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoSimple", b =>
->>>>>>> Stashed changes
                 {
                     b.HasOne("RestauranteHotel.Domain.Entity.ProductoCompuesto", null)
                         .WithMany("Productos")
                         .HasForeignKey("ProductoCompuestoId");
-                });
-
-            modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>
-                {
-                    b.HasOne("RestauranteHotel.Domain.Entity.Producto", null)
-                        .WithOne()
-                        .HasForeignKey("RestauranteHotel.Domain.Entity.ProductoCompuesto", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoSimple", b =>
-                {
-                    b.HasOne("RestauranteHotel.Domain.Entity.Producto", null)
-                        .WithOne()
-                        .HasForeignKey("RestauranteHotel.Domain.Entity.ProductoSimple", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>

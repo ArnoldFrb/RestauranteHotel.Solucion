@@ -7,7 +7,7 @@ namespace RestauranteHotel.Domain.Entity
 {
     public class ProductoCompuesto : Producto, IAggregateRoot
     {
-        public List<Producto> Productos { get; private set; }
+        public List<ProductoSimple> Productos { get; private set; }
 
         public ProductoCompuesto(string nombre, decimal existencia, decimal precio, decimal costo) : base(nombre, existencia, precio, costo)
         {
