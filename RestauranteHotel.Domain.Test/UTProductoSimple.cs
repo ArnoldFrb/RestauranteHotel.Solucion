@@ -171,7 +171,7 @@ namespace RestauranteHotel.Domain.Test
             Entonces El sistema presentará el mensaje. “Venta Exitosa, Cantidad: 40; Costo: 3.500,00; Precio: 5.000,00; Utilidad: 60.0000,00”
         */
         [Test]
-        public void PuedeSolicitarExistenciMenorOIgualrACero()
+        public void PuedeSolicitarExistenciMAyoresACero()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
             var producto = new ProductoSimple("111", "COCA-COLA", 50, 5000, 3500);
