@@ -6,7 +6,7 @@ namespace RestauranteHotel.Domain
 {
     public class ProductoCompuesto : Producto
     {
-        public List<Producto> Productos;
+        public List<Producto> Productos { get; private set; }
 
         public ProductoCompuesto(string id, string nombre, decimal existencia, decimal precio, decimal costo, List<Producto> productos) : base(id, nombre, existencia, precio, costo)
         {
