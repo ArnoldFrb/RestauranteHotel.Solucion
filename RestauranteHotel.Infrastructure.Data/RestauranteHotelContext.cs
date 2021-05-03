@@ -19,9 +19,11 @@ namespace RestauranteHotel.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Producto>().HasKey(c => c.Id);
-            modelBuilder.Entity<Producto>().HasDiscriminator<string>("producto_type")
-                .HasValue<ProductoSimple>("ProductoSimple")
-                .HasValue<ProductoCompuesto>("ProductoCompuesto");
+           
+
+            modelBuilder.Entity<Producto>().ToTable("Producto");
+            modelBuilder.Entity<ProductoSimple>().ToTable("ProductoSimple");
+            modelBuilder.Entity<ProductoCompuesto>().ToTable("ProductoCompuesto");
 
             //inicailizacion de datos 
             //modelBuilder.Entity<CuentaBancaria>().HasData(new  { Id=1, Numero="1010", Ciudad="Valleduar", Email="Email"} );

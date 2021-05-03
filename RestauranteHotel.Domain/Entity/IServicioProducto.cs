@@ -12,6 +12,7 @@ namespace RestauranteHotel.Domain.Entity
         decimal Existencia { get; }
         decimal Precio { get;}
         decimal Costo { get; }
+         
 
         public abstract string Entrada(decimal existencia);
         public abstract string Salida(decimal existencia);

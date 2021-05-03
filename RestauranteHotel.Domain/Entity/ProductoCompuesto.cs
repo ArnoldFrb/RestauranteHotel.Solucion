@@ -11,6 +11,7 @@ namespace RestauranteHotel.Domain.Entity
 
         public ProductoCompuesto(string nombre, decimal existencia, decimal precio, decimal costo) : base(nombre, existencia, precio, costo)
         {
+            
         }
 
         public override string Entrada(decimal existencia)

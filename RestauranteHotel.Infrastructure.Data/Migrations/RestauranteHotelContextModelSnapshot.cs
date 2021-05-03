@@ -37,31 +37,25 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.Property<int?>("ProductoCompuestoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("producto_type")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProductoCompuestoId");
 
-                    b.ToTable("Productos");
-
-                    b.HasDiscriminator<string>("producto_type").HasValue("Producto");
+                    b.ToTable("Producto");
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>
                 {
                     b.HasBaseType("RestauranteHotel.Domain.Entity.Producto");
 
-                    b.HasDiscriminator().HasValue("ProductoCompuesto");
+                    b.ToTable("ProductoCompuesto");
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoSimple", b =>
                 {
                     b.HasBaseType("RestauranteHotel.Domain.Entity.Producto");
 
-                    b.HasDiscriminator().HasValue("ProductoSimple");
+                    b.ToTable("ProductoSimple");
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.Producto", b =>
@@ -69,6 +63,24 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.HasOne("RestauranteHotel.Domain.Entity.ProductoCompuesto", null)
                         .WithMany("Productos")
                         .HasForeignKey("ProductoCompuestoId");
+                });
+
+            modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>
+                {
+                    b.HasOne("RestauranteHotel.Domain.Entity.Producto", null)
+                        .WithOne()
+                        .HasForeignKey("RestauranteHotel.Domain.Entity.ProductoCompuesto", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoSimple", b =>
+                {
+                    b.HasOne("RestauranteHotel.Domain.Entity.Producto", null)
+                        .WithOne()
+                        .HasForeignKey("RestauranteHotel.Domain.Entity.ProductoSimple", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>
