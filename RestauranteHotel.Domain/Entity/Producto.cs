@@ -1,10 +1,12 @@
-﻿using System;
+﻿using RestauranteHotel.Domain.Base;
+using RestauranteHotel.Domain.Entity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace RestauranteHotel.Domain
 {
-    public abstract class Producto
+    public abstract class Producto : Entity<string>, IServicioProducto, IAggregateRoot
     {
         public string Id { get; private set; }
         public string Nombre { get; private set; }
