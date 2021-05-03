@@ -35,8 +35,14 @@ namespace RestauranteHotel.Domain
             {
                 foreach (var pro in Productos)
                 {
+
                     if (pro.Existencia > existencia)
                     {
+                        var res = pro.Salida(existencia);
+                        if (res == $"Registro Exitoso, Nueva Existencia: {pro.Existencia} del Prodcuto {pro.Nombre}")
+                        {
+                            return res;
+                        }
                         Precio += pro.Precio;
                         Costo += pro.Costo;
                     }
