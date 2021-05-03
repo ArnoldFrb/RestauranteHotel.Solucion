@@ -1,18 +1,13 @@
-<<<<<<< Updated upstream
-﻿using System;
-=======
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RestauranteHotel.Infrastructure.Data.Base;
 using RestauranteHotel.Domain.Entity;
 using System;
->>>>>>> Stashed changes
+
 
 namespace RestauranteHotel.Infrastructure.Data
 {
-    public class RestauranteHotelContext
+    public class RestauranteHotelContext : DbContextBase
     {
-<<<<<<< Updated upstream
-=======
         public RestauranteHotelContext(DbContextOptions options) : base(options)
         {
 
@@ -33,6 +28,5 @@ namespace RestauranteHotel.Infrastructure.Data
             //modelBuilder.Entity<CuentaBancaria>().HasData(new  { Id=1, Numero="1010", Ciudad="Valleduar", Email="Email"} );
             //modelBuilder.Entity<CuentaBancaria>().HasData(new { Id = 1, Numero = "1010", Ciudad = "Valleduar", Email = "Email" });
         }
->>>>>>> Stashed changes
     }
 }
