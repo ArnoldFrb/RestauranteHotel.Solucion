@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RestauranteHotel.Domain.Entity
 {
-    public abstract class Producto : Entity<string>, IServicioProducto, IAggregateRoot
+    public abstract class Producto : Entity<int>, IServicioProducto, IAggregateRoot
     {
         public string Nombre { get; private set; }
         public decimal Existencia { get; protected set; }

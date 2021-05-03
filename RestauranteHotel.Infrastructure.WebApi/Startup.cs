@@ -65,7 +65,7 @@ namespace RestauranteHotel.Infrastructure.WebApi
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
