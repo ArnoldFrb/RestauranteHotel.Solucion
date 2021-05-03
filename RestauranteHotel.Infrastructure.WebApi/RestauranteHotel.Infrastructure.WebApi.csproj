@@ -7,6 +7,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RestauranteHotel.Aplication\RestauranteHotel.Aplication.csproj" />
+    <ProjectReference Include="..\RestauranteHotel.Infrastructure.Data\RestauranteHotel.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>

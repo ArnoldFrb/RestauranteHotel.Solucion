@@ -1,13 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
+using RestauranteHotel.Domain.Contracts;
+using RestauranteHotel.Domain.Repositories;
+using RestauranteHotel.Infrastructure.Data;
+using RestauranteHotel.Infrastructure.Data.Base;
+using RestauranteHotel.Infrastructure.Data.Repositories;
 
 namespace RestauranteHotel.Infrastructure.WebApi
 {
@@ -23,7 +25,24 @@ namespace RestauranteHotel.Infrastructure.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            var connectionString = Configuration.GetConnectionString("RestauranteHotelContext");//obtiene la configuracion del appsettitgs
+
+            services.AddDbContext<RestauranteHotelContext>(opt => opt.UseSqlite(connectionString));
+
+            ///Inyección de dependencia Especifica
+            //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.0#register-additional-services-with-extension-methods
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); //Crear Instancia por peticion
+            services.AddScoped<IProductoSimpleRepository, ProductoSimpleRepository>(); //Crear Instancia por peticion
+            services.AddScoped<IProductoCompuestoRepository, ProductoCompuestoRepository>(); //Crear Instancia por peticion
+            services.AddScoped<IDbContext, RestauranteHotelContext>(); //Crear Instancia por peticion
+
+            //inyección del servicio de mail
+
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestauranteHotel.Infrastructure.WebApi", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,12 +51,8 @@ namespace RestauranteHotel.Infrastructure.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RestauranteHotel.Infrastructure.WebApi v1"));
             }
 
             app.UseHttpsRedirection();

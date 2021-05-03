@@ -1,4 +1,5 @@
 ﻿using RestauranteHotel.Domain.Contracts;
+using RestauranteHotel.Domain.Repositories;
 using System;
 
 namespace RestauranteHotel.Aplication
@@ -7,7 +8,7 @@ namespace RestauranteHotel.Aplication
     public class SalidaProductoSimpleService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IProductoRepository _productoRepository;
+        private readonly IProductoSimpleRepository _productoSimpleRepository;
 
         public SalidaProductoSimpleService(IUnitOfWork unitOfWork, IProductoRepository productoRepository)
         {
@@ -16,8 +17,15 @@ namespace RestauranteHotel.Aplication
         }
 
         public SalidaProductoSimpleResponse salidaProductoSimple(SalidaProductoSimpleRequest request)
+
         {
-            var producto = _productoRepository.Find(request.Id);//infraestructura-datos// }
+            _unitOfWork = unitOfWork;
+            _productoSimpleRepository = productoSimpleRepository;
+        }
+
+        public SalidaProductoSimpleResponse Salida(SalidaProductoSimpleRequest request)
+        {
+            var producto = _productoSimpleRepository.Find(request.Id);//infraestructura-datos// }
 
             if (producto != null)
             {
