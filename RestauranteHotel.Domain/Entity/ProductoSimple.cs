@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestauranteHotel.Domain
+namespace RestauranteHotel.Domain.Entity
 {
     public class ProductoSimple : Producto
     {
-        public ProductoSimple(string id, string nombre, decimal existencia, decimal precio, decimal costo) : base(id, nombre, existencia, precio, costo)
+        public ProductoSimple(string nombre, decimal existencia, decimal precio, decimal costo) : base(nombre, existencia, precio, costo)
         {
         }
 

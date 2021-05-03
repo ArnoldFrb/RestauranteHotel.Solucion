@@ -1,5 +1,5 @@
 ﻿using RestauranteHotel.Domain.Base;
- 
+using RestauranteHotel.Domain.Entity;
 
 namespace RestauranteHotel.Domain.Contracts
 {

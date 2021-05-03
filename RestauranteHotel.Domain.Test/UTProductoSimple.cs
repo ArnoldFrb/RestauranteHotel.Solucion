@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using RestauranteHotel.Domain.Entity;
 
 namespace RestauranteHotel.Domain.Test
 {
@@ -25,7 +26,7 @@ namespace RestauranteHotel.Domain.Test
         public void NoPuedeIngresarExistenciaMenorOIgualACero()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var producto = new ProductoSimple("111", "COCA-COLA", 0, 5000, 3500);
+            var producto = new ProductoSimple("COCA-COLA", 0, 5000, 3500);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Entrada(0);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -46,7 +47,7 @@ namespace RestauranteHotel.Domain.Test
         public void NoPuedeSumarExistenciaMenorOIgualACero()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var producto = new ProductoSimple("111", "COCA-COLA", 50, 5000, 3500);
+            var producto = new ProductoSimple("COCA-COLA", 50, 5000, 3500);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Entrada(0);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -67,7 +68,7 @@ namespace RestauranteHotel.Domain.Test
         public void PuedeIngresarExistenciaMayorACero()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var producto = new ProductoSimple("111", "COCA-COLA", 0, 5000, 3500);
+            var producto = new ProductoSimple("COCA-COLA", 0, 5000, 3500);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Entrada(50);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -88,7 +89,7 @@ namespace RestauranteHotel.Domain.Test
         public void PuedeSumarExistenciaMayorACero()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var producto = new ProductoSimple("111", "COCA-COLA", 50, 5000, 3500);
+            var producto = new ProductoSimple("COCA-COLA", 50, 5000, 3500);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Entrada(24);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -111,7 +112,7 @@ namespace RestauranteHotel.Domain.Test
         public void NoPuedeSolicitarExistenciaMenorOIgualACero()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var producto = new ProductoSimple("111", "COCA-COLA", 50, 5000, 3500);
+            var producto = new ProductoSimple("COCA-COLA", 50, 5000, 3500);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(0);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -132,7 +133,7 @@ namespace RestauranteHotel.Domain.Test
         public void NoPuedeSolicitarExistenciMayorALaRegistrada()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var producto = new ProductoSimple("111", "COCA-COLA", 50, 5000, 3500);
+            var producto = new ProductoSimple("COCA-COLA", 50, 5000, 3500);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(60);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -153,7 +154,7 @@ namespace RestauranteHotel.Domain.Test
         public void PuedeSolicitarExistenciMenorOIgualrALaRegistrada()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var producto = new ProductoSimple("111", "COCA-COLA", 50, 5000, 3500);
+            var producto = new ProductoSimple("COCA-COLA", 50, 5000, 3500);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(40);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -174,7 +175,7 @@ namespace RestauranteHotel.Domain.Test
         public void PuedeSolicitarExistenciMAyoresACero()
         {
             //ARRANGE //PREPARAR // DADO // GIVEN
-            var producto = new ProductoSimple("111", "COCA-COLA", 50, 5000, 3500);
+            var producto = new ProductoSimple("COCA-COLA", 50, 5000, 3500);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(40);
             //ASSERT //AFIRMACION //ENTONCES //THEN

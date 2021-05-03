@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using RestauranteHotel.Domain.Entity;
 using System.Collections.Generic;
 
 namespace RestauranteHotel.Domain.Test
@@ -30,11 +31,11 @@ namespace RestauranteHotel.Domain.Test
             //ARRANGE //PREPARAR // DADO // GIVEN
             var list = new List<Producto>();
 
-            list.Add(new ProductoSimple("111", "Queso", 50, 700, 500));
-            list.Add(new ProductoSimple("112", "Pan", 30, 1000, 600));
-            list.Add(new ProductoSimple("113", "Salchicha", 40, 800, 500));
+            list.Add(new ProductoSimple("Queso", 50, 700, 500));
+            list.Add(new ProductoSimple("Pan", 30, 1000, 600));
+            list.Add(new ProductoSimple("Salchicha", 40, 800, 500));
 
-            var producto = new ProductoCompuesto("114", "PERRO CALIENTE", 0, 0, 0, list);
+            var producto = new ProductoCompuesto("PERRO CALIENTE", 0, 0, 0, list);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(0);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -59,11 +60,11 @@ namespace RestauranteHotel.Domain.Test
             //ARRANGE //PREPARAR // DADO // GIVEN
             var list = new List<Producto>();
 
-            list.Add(new ProductoSimple("111", "Queso", 50, 700, 500));
-            list.Add(new ProductoSimple("112", "Pan", 30, 1000, 600));
-            list.Add(new ProductoSimple("113", "Salchicha", 40, 800, 500));
+            list.Add(new ProductoSimple("Queso", 50, 700, 500));
+            list.Add(new ProductoSimple("Pan", 30, 1000, 600));
+            list.Add(new ProductoSimple("Salchicha", 40, 800, 500));
 
-            var producto = new ProductoCompuesto("114", "PERRO CALIENTE", 0, 0, 0, list);
+            var producto = new ProductoCompuesto("PERRO CALIENTE", 0, 0, 0, list);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(35);
             //ASSERT //AFIRMACION //ENTONCES //THEN
@@ -88,11 +89,11 @@ namespace RestauranteHotel.Domain.Test
             //ARRANGE //PREPARAR // DADO // GIVEN
             var list = new List<Producto>();
 
-            list.Add(new ProductoSimple("111", "Queso", 50, 700, 500));
-            list.Add(new ProductoSimple("112", "Pan", 30, 1000, 600));
-            list.Add(new ProductoSimple("113", "Salchicha", 40, 800, 500));
+            list.Add(new ProductoSimple("Queso", 50, 700, 500));
+            list.Add(new ProductoSimple("Pan", 30, 1000, 600));
+            list.Add(new ProductoSimple("Salchicha", 40, 800, 500));
 
-            var producto = new ProductoCompuesto("114", "PERRO CALIENTE", 0, 0, 0, list);
+            var producto = new ProductoCompuesto("PERRO CALIENTE", 0, 0, 0, list);
             // ACT // ACCION // CUANDO // WHEN
             var resultado = producto.Salida(2);
             //ASSERT //AFIRMACION //ENTONCES //THEN

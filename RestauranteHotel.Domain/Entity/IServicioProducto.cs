@@ -8,7 +8,6 @@ namespace RestauranteHotel.Domain.Entity
 {
     public interface IServicioProducto
     {
-        string Id { get; }
         string Nombre { get;}
         decimal Existencia { get; }
         decimal Precio { get;}
