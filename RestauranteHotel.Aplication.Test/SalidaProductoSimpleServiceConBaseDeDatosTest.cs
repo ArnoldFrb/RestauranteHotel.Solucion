@@ -70,5 +70,44 @@ namespace RestauranteHotel.Aplication.Test
             _dbContext.SaveChanges();
         }
 
+        [Test]
+        public void SalidaTest_ExistenciaSolicitadaMayorAExistenciaGuardada()
+        {
+            //Arrange
+            var productoSimple = ProductoMother.CreateProducto("Pan");
+
+            _dbContext.ProductoSimples.Add(productoSimple);
+            _dbContext.SaveChanges();
+
+            //Act
+            var response = _salidaProductoSimpleService.Salida(new SalidaProductoSimpleRequest(productoSimple.Id, productoSimple.Nombre, 20, productoSimple.Precio, productoSimple.Costo));
+            //Assert
+            Assert.AreEqual("Producto simple no fue actualizado", response.Mensaje);
+
+            //
+            //Revertir
+            _dbContext.ProductoSimples.Remove(productoSimple);
+            _dbContext.SaveChanges();
+        }
+
+        [Test]
+        public void SalidaTest_ExistenciaSolicitadaMenorAExistenciaGuardada()
+        {
+            //Arrange
+            var productoSimple = ProductoMother.CreateProducto("Pan");
+
+            _dbContext.ProductoSimples.Add(productoSimple);
+            _dbContext.SaveChanges();
+
+            //Act
+            var response = _salidaProductoSimpleService.Salida(new SalidaProductoSimpleRequest(productoSimple.Id, productoSimple.Nombre, 2, productoSimple.Precio, productoSimple.Costo));
+            //Assert
+            Assert.AreEqual("Producto simple actualizado", response.Mensaje);
+
+            //
+            //Revertir
+            _dbContext.ProductoSimples.Remove(productoSimple);
+            _dbContext.SaveChanges();
+        }
     }
 }

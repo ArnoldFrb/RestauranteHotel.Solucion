@@ -23,7 +23,7 @@ namespace RestauranteHotel.Aplication
             if (producto != null)
             {
                 var res = producto.Salida(request.existencia);
-                if (res == $"Registro Exitoso, Nueva Existencia: {request.existencia} del Prodcuto {request.nombre}")
+                if (res == $"Venta Exitosa, Cantidad: {request.existencia}; Costo: {request.costo}; Precio: {request.precio}; Utilidad: {((request.precio * request.existencia) - (request.costo * request.existencia))}")
                 {
                     _unitOfWork.Commit();
                     return new SalidaProductoSimpleResponse("Producto simple actualizado");
