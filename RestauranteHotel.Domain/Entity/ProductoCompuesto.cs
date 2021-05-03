@@ -6,11 +6,10 @@ namespace RestauranteHotel.Domain.Entity
 {
     public class ProductoCompuesto : Producto
     {
-        public List<Producto> Productos { get; private set; }
+        public List<ProductoSimple> Productos { get; private set; }
 
-        public ProductoCompuesto(string nombre, decimal existencia, decimal precio, decimal costo, List<Producto> productos) : base(nombre, existencia, precio, costo)
+        public ProductoCompuesto(string nombre, decimal existencia, decimal precio, decimal costo) : base(nombre, existencia, precio, costo)
         {
-            Productos = productos;
         }
 
         public override string Entrada(decimal existencia)

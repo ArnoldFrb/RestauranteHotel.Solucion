@@ -1,4 +1,9 @@
-﻿using System;
+﻿
+using RestauranteHotel.Domain.Entity;
+using RestauranteHotel.Domain.Repositories;
+using RestauranteHotel.Infrastructure.Data.Base;
+using RestauranteHotel.Domain.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +11,10 @@ using System.Threading.Tasks;
 
 namespace RestauranteHotel.Infrastructure.Data.Repositories
 {
-    class ProductoSiempleRepository
+    public class ProductoSimpleRepository : GenericRepository<ProductoSimple>, IProductoSimpleRepository
     {
+        public ProductoSimpleRepository(IDbContext context) : base(context)
+        {
+        }
     }
 }

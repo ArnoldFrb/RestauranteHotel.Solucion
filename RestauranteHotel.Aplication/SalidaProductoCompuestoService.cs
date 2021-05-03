@@ -10,18 +10,18 @@ namespace RestauranteHotel.Aplication
     public class SalidaProductoCompuestoService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IProductoRepository _productoRepository;
+        private readonly IProductoCompuestoRepository _productoCompuestoRepository;
 
-        public SalidaProductoCompuestoService(IUnitOfWork unitOfWork, IProductoRepository productoRepository)
+        public SalidaProductoCompuestoService(IUnitOfWork unitOfWork, IProductoCompuestoRepository productoCompuestoRepository)
         {
             _unitOfWork = unitOfWork;
-            _productoRepository = productoRepository;
+            _productoCompuestoRepository = productoCompuestoRepository;
         }
 
         
-        public SalidaProductoCompuestoResponse salidaProductoCompuesto(SalidaProductoCompuestoRequest request)
+        public SalidaProductoCompuestoResponse Salida(SalidaProductoCompuestoRequest request)
         {
-            var producto = _productoRepository.Find(request.Id);//infraestructura-datos// }
+            var producto = _productoCompuestoRepository.Find(request.Id);//infraestructura-datos// }
 
             if (producto != null)
             {

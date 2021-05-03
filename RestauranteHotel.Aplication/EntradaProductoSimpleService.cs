@@ -1,4 +1,5 @@
 ﻿using RestauranteHotel.Domain.Contracts;
+using RestauranteHotel.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,17 @@ namespace RestauranteHotel.Aplication
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IProductoRepository _productoRepository;
+        private readonly IProductoSimpleRepository _productoSimpleRepository;
 
-        public EntradaProductoSimpleService(IUnitOfWork unitOfWork, IProductoRepository productoRepository)
+        public EntradaProductoSimpleService(IUnitOfWork unitOfWork, IProductoSimpleRepository productoSimpleRepository)
         {
             _unitOfWork = unitOfWork;
-            _productoRepository = productoRepository;
+            _productoSimpleRepository = productoSimpleRepository;
         }
 
-        public EntradaProductoSimpleResponse entradaProductoSiemple(EntradaProductoSimpleRequest request)
+        public EntradaProductoSimpleResponse Entrada(EntradaProductoSimpleRequest request)
         {
-            var producto = _productoRepository.Find(request.Id);//infraestructura-datos// }
+            var producto = _productoSimpleRepository.Find(request.Id);//infraestructura-datos// }
 
             if (producto != null)
             {

@@ -10,8 +10,7 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                 name: "Productos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
                     Nombre = table.Column<string>(type: "TEXT", nullable: true),
                     Existencia = table.Column<decimal>(type: "TEXT", nullable: false),
                     Precio = table.Column<decimal>(type: "TEXT", nullable: false),
@@ -26,8 +25,7 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                 name: "ProductoCompuesto",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true)
+                    Id = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,9 +42,8 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                 name: "ProductoSimple",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ProductoCompuestoId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    ProductoCompuestoId = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

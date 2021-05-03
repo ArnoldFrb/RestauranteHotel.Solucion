@@ -3,7 +3,6 @@ using RestauranteHotel.Infrastructure.Data.Base;
 using RestauranteHotel.Domain.Entity;
 using System;
 
-
 namespace RestauranteHotel.Infrastructure.Data
 {
     public class RestauranteHotelContext : DbContextBase

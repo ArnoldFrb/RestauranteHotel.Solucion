@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestauranteHotel.Infrastructure.Data.Base
 {
-    class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity, IAggregateRoot
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity, IAggregateRoot
     {
         protected IDbContext _db;
         protected readonly DbSet<T> _dbset;
