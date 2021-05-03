@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RestauranteHotel.Domain.Repositories
 {
-    public interface ProductoSiempleRepository : IGenericRepository<ProductoSimple>
+    public interface IProductoSimpleRepository : IGenericRepository<ProductoSimple>
     {
     }
 }
