@@ -8,5 +8,6 @@ namespace RestauranteHotel.Infrastructure.Data.Base
 {
     class DbContextBase
     {
+
     }
 }
