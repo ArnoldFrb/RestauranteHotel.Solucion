@@ -1,4 +1,5 @@
 ﻿using RestauranteHotel.Domain.Contracts;
+using RestauranteHotel.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,14 @@ namespace RestauranteHotel.Aplication
 
             if (producto != null)
             {
-                producto.Salida(request.existencia);
-                _unitOfWork.Commit();
-                return new SalidaProductoCompuestoResponse("Producto compuesto actualizado");
+                producto.ListaProductos(request.productos);
+                var res = producto.Salida(request.existencia);
+                if (res == "Venta Exitosa")
+                {
+                    _unitOfWork.Commit();
+                    return new SalidaProductoCompuestoResponse("Producto compuesto actualizado");
+                }
+                return new SalidaProductoCompuestoResponse("Producto compuesto no fue actualizado");
             }
             else
             {
@@ -38,6 +44,6 @@ namespace RestauranteHotel.Aplication
 
     }
 
-    public record SalidaProductoCompuestoRequest(int Id, string nombre, decimal existencia, decimal precio, decimal costo);
+    public record SalidaProductoCompuestoRequest(int Id, string nombre, decimal existencia, decimal precio, decimal costo, List<ProductoSimple> productos);
     public record SalidaProductoCompuestoResponse(string Mensaje);
 }
