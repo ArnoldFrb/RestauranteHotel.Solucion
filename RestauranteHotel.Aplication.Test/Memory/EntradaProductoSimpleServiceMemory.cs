@@ -6,9 +6,9 @@ using RestauranteHotel.Infrastructure.Data.Base;
 using RestauranteHotel.Infrastructure.Data.ObjectMother;
 using RestauranteHotel.Infrastructure.Data.Repositories;
 
-namespace RestauranteHotel.Aplication.Test.DataBase
+namespace RestauranteHotel.Aplication.Test.Memory
 {
-    public class EntradaProductoSimpleServiceConBaseDeDatosTest
+    public class EntradaProductoSimpleServiceMemory
     {
         private RestauranteHotelContext _dbContext;
         private EntradaProductoSimpleService _entradaProductoSimpleService;//SUT - Objeto bajo prueba
@@ -18,7 +18,7 @@ namespace RestauranteHotel.Aplication.Test.DataBase
         {
             //Arrange
             var optionsSqlite = new DbContextOptionsBuilder<RestauranteHotelContext>()
-           .UseSqlite(@"Data Source=RestauranteHotelDataBaseTest.db")
+           .UseSqlite(SqlLiteDatabaseInMemory.CreateConnection())
            .Options;
 
             _dbContext = new RestauranteHotelContext(optionsSqlite);
