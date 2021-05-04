@@ -8,7 +8,7 @@ using RestauranteHotel.Infrastructure.Data.Repositories;
 
 namespace RestauranteHotel.Aplication.Test.DataBase
 {
-    public class EntradaProductoSimpleServiceConBaseDeDatosTest
+    public class EntradaProductoSimpleServiceFakeTest
     {
         private RestauranteHotelContext _dbContext;
         private EntradaProductoSimpleService _entradaProductoSimpleService;//SUT - Objeto bajo prueba

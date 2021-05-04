@@ -3,7 +3,6 @@ using System;
 using RestauranteHotel.Aplication;
 using RestauranteHotel.Domain.Contracts;
 
-
 namespace RestauranteHotel.Infrastructure.WebApi.Controllers
 {
     [Route("api/[controller]")]
