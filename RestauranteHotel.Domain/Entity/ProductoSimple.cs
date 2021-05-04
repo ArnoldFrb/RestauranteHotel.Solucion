@@ -6,6 +6,9 @@ namespace RestauranteHotel.Domain.Entity
 {
     public class ProductoSimple : Producto
     {
+
+        public ProductoCompuesto ProductoCompuesto { get; private set; }
+
         public ProductoSimple(string nombre, decimal existencia, decimal precio, decimal costo) : base(nombre, existencia, precio, costo)
         {
         }

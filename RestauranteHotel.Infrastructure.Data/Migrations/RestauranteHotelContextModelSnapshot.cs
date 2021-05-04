@@ -23,16 +23,16 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Costo")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("Decimal");
 
                     b.Property<decimal>("Existencia")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("Decimal");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Precio")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("Decimal");
 
                     b.HasKey("Id");
 
@@ -44,6 +44,16 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.HasBaseType("RestauranteHotel.Domain.Entity.Producto");
 
                     b.ToTable("ProductoCompuesto");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Costo = 3.0000m,
+                            Existencia = 10.0m,
+                            Nombre = "perro sencillo",
+                            Precio = 5.000m
+                        });
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoSimple", b =>
@@ -56,6 +66,52 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     b.HasIndex("ProductoCompuestoId");
 
                     b.ToTable("ProductoSimple");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Costo = 1.000m,
+                            Existencia = 10.0m,
+                            Nombre = "salchicha",
+                            Precio = 0.0m,
+                            ProductoCompuestoId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Costo = 1.000m,
+                            Existencia = 10.0m,
+                            Nombre = "pan de perro",
+                            Precio = 0.0m,
+                            ProductoCompuestoId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Costo = 1.000m,
+                            Existencia = 10.0m,
+                            Nombre = "lamina de queso",
+                            Precio = 0.0m,
+                            ProductoCompuestoId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Costo = 2.000m,
+                            Existencia = 1.0m,
+                            Nombre = "pan de perro extragrande",
+                            Precio = 0.0m,
+                            ProductoCompuestoId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Costo = 2.000m,
+                            Existencia = 10.0m,
+                            Nombre = "salchicha ranchera",
+                            Precio = 0.0m
+                        });
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>
@@ -75,9 +131,11 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RestauranteHotel.Domain.Entity.ProductoCompuesto", null)
+                    b.HasOne("RestauranteHotel.Domain.Entity.ProductoCompuesto", "ProductoCompuesto")
                         .WithMany("Productos")
                         .HasForeignKey("ProductoCompuestoId");
+
+                    b.Navigation("ProductoCompuesto");
                 });
 
             modelBuilder.Entity("RestauranteHotel.Domain.Entity.ProductoCompuesto", b =>

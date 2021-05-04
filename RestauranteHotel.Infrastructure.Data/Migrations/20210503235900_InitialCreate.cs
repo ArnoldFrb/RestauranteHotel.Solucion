@@ -13,9 +13,9 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombre = table.Column<string>(type: "TEXT", nullable: true),
-                    Existencia = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Precio = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Costo = table.Column<decimal>(type: "TEXT", nullable: false)
+                    Existencia = table.Column<decimal>(type: "Decimal", nullable: false),
+                    Precio = table.Column<decimal>(type: "Decimal", nullable: false),
+                    Costo = table.Column<decimal>(type: "Decimal", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,6 +64,66 @@ namespace RestauranteHotel.Infrastructure.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Productos",
+                columns: new[] { "Id", "Costo", "Existencia", "Nombre", "Precio" },
+                values: new object[] { 1, 3.0000m, 10.0m, "perro sencillo", 5.000m });
+
+            migrationBuilder.InsertData(
+                table: "Productos",
+                columns: new[] { "Id", "Costo", "Existencia", "Nombre", "Precio" },
+                values: new object[] { 2, 1.000m, 10.0m, "salchicha", 0.0m });
+
+            migrationBuilder.InsertData(
+                table: "Productos",
+                columns: new[] { "Id", "Costo", "Existencia", "Nombre", "Precio" },
+                values: new object[] { 3, 1.000m, 10.0m, "pan de perro", 0.0m });
+
+            migrationBuilder.InsertData(
+                table: "Productos",
+                columns: new[] { "Id", "Costo", "Existencia", "Nombre", "Precio" },
+                values: new object[] { 4, 1.000m, 10.0m, "lamina de queso", 0.0m });
+
+            migrationBuilder.InsertData(
+                table: "Productos",
+                columns: new[] { "Id", "Costo", "Existencia", "Nombre", "Precio" },
+                values: new object[] { 5, 2.000m, 1.0m, "pan de perro extragrande", 0.0m });
+
+            migrationBuilder.InsertData(
+                table: "Productos",
+                columns: new[] { "Id", "Costo", "Existencia", "Nombre", "Precio" },
+                values: new object[] { 6, 2.000m, 10.0m, "salchicha ranchera", 0.0m });
+
+            migrationBuilder.InsertData(
+                table: "ProductoCompuesto",
+                column: "Id",
+                value: 1);
+
+            migrationBuilder.InsertData(
+                table: "ProductoSimple",
+                columns: new[] { "Id", "ProductoCompuestoId" },
+                values: new object[] { 6, null });
+
+            migrationBuilder.InsertData(
+                table: "ProductoSimple",
+                columns: new[] { "Id", "ProductoCompuestoId" },
+                values: new object[] { 2, 1 });
+
+            migrationBuilder.InsertData(
+                table: "ProductoSimple",
+                columns: new[] { "Id", "ProductoCompuestoId" },
+                values: new object[] { 3, 1 });
+
+            migrationBuilder.InsertData(
+                table: "ProductoSimple",
+                columns: new[] { "Id", "ProductoCompuestoId" },
+                values: new object[] { 4, 1 });
+
+            migrationBuilder.InsertData(
+                table: "ProductoSimple",
+                columns: new[] { "Id", "ProductoCompuestoId" },
+                values: new object[] { 5, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductoSimple_ProductoCompuestoId",

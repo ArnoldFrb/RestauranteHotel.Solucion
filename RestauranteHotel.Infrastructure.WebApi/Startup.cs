@@ -28,7 +28,7 @@ namespace RestauranteHotel.Infrastructure.WebApi
         {
             var connectionString = Configuration.GetConnectionString("RestauranteHotelContext");//obtiene la configuracion del appsettitgs
 
-            services.AddDbContext<RestauranteHotelContext>(opt => opt.UseSqlite(connectionString));
+            services.AddDbContext<RestauranteHotelContext>(opt => opt.UseSqlite(connectionString).EnableSensitiveDataLogging());
 
             ///Inyección de dependencia Especifica
             //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.0#register-additional-services-with-extension-methods
