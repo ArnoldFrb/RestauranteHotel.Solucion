@@ -5,7 +5,7 @@ using RestauranteHotel.Infrastructure.Data.Base;
 using RestauranteHotel.Infrastructure.Data.ObjectMother;
 using RestauranteHotel.Infrastructure.Data.Repositories;
 
-namespace RestauranteHotel.Aplication.Test
+namespace RestauranteHotel.Aplication.Test.DataBase
 {
     public class SalidaProductoCompuestoServiceConBaseDeDatosTest
     {

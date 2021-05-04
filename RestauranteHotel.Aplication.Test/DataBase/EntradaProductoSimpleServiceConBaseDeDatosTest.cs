@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
+using RestauranteHotel.Aplication.Test.Dobles;
 using RestauranteHotel.Infrastructure.Data;
 using RestauranteHotel.Infrastructure.Data.Base;
 using RestauranteHotel.Infrastructure.Data.ObjectMother;
 using RestauranteHotel.Infrastructure.Data.Repositories;
 
-namespace RestauranteHotel.Aplication.Test
+namespace RestauranteHotel.Aplication.Test.DataBase
 {
     public class EntradaProductoSimpleServiceConBaseDeDatosTest
     {
@@ -17,7 +18,7 @@ namespace RestauranteHotel.Aplication.Test
         {
             //Arrange
             var optionsSqlite = new DbContextOptionsBuilder<RestauranteHotelContext>()
-           .UseSqlite(@"Data Source=RestauranteHotelDataBaseTest.db")
+           .UseSqlite(SqlLiteDatabaseInMemory.CreateConnection())
            .Options;
 
             _dbContext = new RestauranteHotelContext(optionsSqlite);
@@ -27,6 +28,7 @@ namespace RestauranteHotel.Aplication.Test
             _entradaProductoSimpleService = new EntradaProductoSimpleService(
                 new UnitOfWork(_dbContext),
                 new ProductoSimpleRepository(_dbContext));
+
         }
 
 
